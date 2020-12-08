@@ -28,9 +28,10 @@ public class ShipAgentFootball : Agent
     public Team team;
     private int m_PlayerIndex;
     private float m_BallTouch = 0.2f; // coefficient for the reward for colliding with a ball.
-    const float kPower = 1000f;
+    const float kPower = 1500f;
     private float m_kickPower;
     public GameObject[] opponents;
+    public GameObject[] teammates;
     public Arena area;
     public Position position;
 
@@ -42,10 +43,24 @@ public class ShipAgentFootball : Agent
 
     private float m_Existential;
 
+    private List<Rigidbody2D> _opponentRbs = new List<Rigidbody2D>();
+    private List<Rigidbody2D> _teamRbs = new List<Rigidbody2D>();
+    private Rigidbody2D _ballRb;
+
+    //for normalization
+    private float _arenaXMax = 45f;
+    private float _arenaYMax = 19.5f;
+    //Estimates
+    private float _maxXVelocity = 25f;
+    private float _maxYVelocity = 21f;
+    private float _maxAngularVelocity = 250f;
+    
 
     public override void Initialize()
     {
         rBody = GetComponent<Rigidbody2D>();
+        _ballRb = Target.GetComponent<Rigidbody2D>();
+        //Time.timeScale = 2f;
         
         
         m_Existential = 1f / MaxStep;
@@ -54,17 +69,27 @@ public class ShipAgentFootball : Agent
         if (m_BehaviorParameters.TeamId == (int) Team.Left)
         {
             team = Team.Left;
-            m_Transform = new Vector3(-10, 0, 0);
+            m_Transform = new Vector3(transform.position.x, transform.position.y, 0);
             m_Rotation = -90;
         }
         else
         {
             team = Team.Right;
-            m_Transform = new Vector3(10, 0, 0);
+            m_Transform = new Vector3(transform.position.x, transform.position.y, 0);
             m_Rotation = 90;
         }
 
         //opponents = GameObject.FindGameObjectsWithTag(team == Team.Left ? "rightAgent" : "leftAgent");
+
+        foreach (var op in opponents)
+        {
+            _opponentRbs.Add(op.GetComponent<Rigidbody2D>());
+        }
+        
+        foreach (var tm in teammates)
+        {
+            _teamRbs.Add(tm.GetComponent<Rigidbody2D>());
+        }
 
         var playerState = new PlayerState
         {
@@ -105,28 +130,38 @@ public class ShipAgentFootball : Agent
         rBody.angularVelocity = 0;
         area.ResetBall();
     }
+
+ 
     
-    /*public override void CollectObservations(VectorSensor sensor)
+    public override void CollectObservations(VectorSensor sensor)
     {
-        // Target and Agent positions
-        sensor.AddObservation(Target.localPosition);
-        sensor.AddObservation(transform.localPosition);
+        //Agent information
+        sensor.AddObservation(NormalizePosition(transform.localPosition));
+        sensor.AddObservation(NormalizeRotation(transform.localRotation));
+        sensor.AddObservation(NormalizeAngularVelocity(rBody.angularVelocity));
+        sensor.AddObservation(NormalizeVelocity(rBody.velocity));
 
-        // Agent rotation
-        sensor.AddObservation(transform.localRotation.z);
-        sensor.AddObservation(rBody.angularVelocity);
-
-        // Agent velocity
-        sensor.AddObservation(rBody.velocity.x);
-        sensor.AddObservation(rBody.velocity.y);
+        //Ball information
+        sensor.AddObservation(NormalizePosition(Target.localPosition));
+        sensor.AddObservation(NormalizeVelocity(_ballRb.velocity));
         
-        // Opponent information
-        foreach (var opponent in opponents)
+        
+        //Opponents observations
+        for (var i = 0; i < opponents.Length; i++)
         {
-            sensor.AddObservation(opponent.transform.localPosition);
-            sensor.AddObservation(opponent.transform.localRotation.z);
+            sensor.AddObservation(NormalizePosition(opponents[i].transform.position));
+            sensor.AddObservation(NormalizeRotation(opponents[i].transform.rotation));
+            sensor.AddObservation(NormalizeVelocity(_opponentRbs[i].velocity));
         }
-    }*/
+        
+        //Teammates observations
+        for (var i = 0; i < teammates.Length; i++)
+        {
+            sensor.AddObservation(NormalizePosition(teammates[i].transform.position));
+            sensor.AddObservation(NormalizeRotation(teammates[i].transform.rotation));
+            sensor.AddObservation(NormalizeVelocity(_teamRbs[i].velocity));
+        }
+    }
     
     public float forceMultiplier = 10;
     public float rotationVelocity = 100;
@@ -159,5 +194,29 @@ public class ShipAgentFootball : Agent
     {
         actionsOut[0] = Input.GetAxis("Horizontal");
         actionsOut[1] = Input.GetAxis("Vertical");
+    }
+    
+    //------------------------------------------normalization
+    private Vector3 NormalizePosition(Vector3 pos)
+    {
+        return new Vector3((pos.x - (-_arenaXMax))/(_arenaXMax - (-_arenaXMax)), 
+            (pos.y - (-_arenaYMax))/(_arenaYMax - (-_arenaYMax)));
+    }
+
+    private float NormalizeRotation(Quaternion rot)
+    {
+        Quaternion rotation = rot;
+        return rotation.eulerAngles.z / 360.0f;
+    }
+
+    private Vector2 NormalizeVelocity(Vector2 vel)
+    {
+        return new Vector2((vel.x - (-_maxXVelocity))/(_maxXVelocity - (-_maxXVelocity)), 
+            (vel.y - (-_maxYVelocity))/(_maxYVelocity - (-_maxYVelocity)));
+    }
+
+    private float NormalizeAngularVelocity(float no)
+    {
+        return (no - (-_maxAngularVelocity)) / (_maxAngularVelocity - (-_maxAngularVelocity));
     }
 }

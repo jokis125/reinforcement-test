@@ -22,6 +22,7 @@ public class Arena : MonoBehaviour
     //public GameObject goalTextUI;
 
     private EnvironmentParameters m_ResetParams;
+    private float goalLine = 41; //-41 and 41
     
     void Awake()
     {
@@ -45,11 +46,11 @@ public class Arena : MonoBehaviour
 
     public void CheckForGoal()
     {
-        if (ball.transform.localPosition.x > 20)
+        if (ball.transform.localPosition.x > goalLine)
         {
             GoalTouched(ShipAgentFootball.Team.Left);
         }
-        else if (ball.transform.localPosition.x < -20)
+        else if (ball.transform.localPosition.x < -goalLine)
         {
             GoalTouched(ShipAgentFootball.Team.Right);
         }
