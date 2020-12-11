@@ -5,8 +5,8 @@ behaviors:
   ShipAgentFootball:
     trainer_type: ppo
     hyperparameters:
-      batch_size: 1024
-      buffer_size: 10240
+      batch_size: 2048
+      buffer_size: 20480
       learning_rate: 3.0e-3
       beta: 5.0e-3
       epsilon: 0.2
@@ -15,15 +15,15 @@ behaviors:
       learning_rate_schedule: constant
     network_settings:
       normalize: false
-      hidden_units: 256
+      hidden_units: 512
       num_layers: 2
       vis_encode_type: simple
     reward_signals:
       extrinsic:
         gamma: 0.99
         strength: 1.0
-    max_steps: 100000000
-    time_horizon: 500
+    max_steps: 50000000
+    time_horizon: 1000
     summary_freq: 10000
     threaded: true
     self_play:
