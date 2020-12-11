@@ -1,0 +1,2 @@
+model_checkpoint_path: "ShipAgentFootball-0.ckpt"
+all_model_checkpoint_paths: "ShipAgentFootball-0.ckpt"

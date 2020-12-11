@@ -1,0 +1,47 @@
+{
+    "ShipAgentFootball": {
+        "checkpoints": [
+            {
+                "steps": 15999948,
+                "file_path": "results\\football3x3Rays1\\ShipAgentFootball\\ShipAgentFootball-15999948.nn",
+                "reward": 0.0,
+                "creation_time": 1607685036.175543
+            },
+            {
+                "steps": 16499298,
+                "file_path": "results\\football3x3Rays1\\ShipAgentFootball\\ShipAgentFootball-16499298.nn",
+                "reward": 0.0,
+                "creation_time": 1607689436.5228891
+            },
+            {
+                "steps": 16999452,
+                "file_path": "results\\football3x3Rays1\\ShipAgentFootball\\ShipAgentFootball-16999452.nn",
+                "reward": 0.0,
+                "creation_time": 1607693745.8895514
+            },
+            {
+                "steps": 17499801,
+                "file_path": "results\\football3x3Rays1\\ShipAgentFootball\\ShipAgentFootball-17499801.nn",
+                "reward": -0.12,
+                "creation_time": 1607698148.7524593
+            },
+            {
+                "steps": 17819433,
+                "file_path": "results\\football3x3Rays1\\ShipAgentFootball\\ShipAgentFootball-17819433.nn",
+                "reward": 0.0,
+                "creation_time": 1607700960.232148
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 17819433,
+            "file_path": "results\\football3x3Rays1\\ShipAgentFootball.nn",
+            "reward": 0.0,
+            "creation_time": 1607700960.232148
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.1.0",
+        "mlagents_version": "0.20.0",
+        "tensorflow_version": "2.3.1"
+    }
+}

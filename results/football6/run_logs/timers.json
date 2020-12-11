@@ -1,0 +1,42 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1607212240",
+        "python_version": "3.8.2 (tags/v3.8.2:7b3ab59, Feb 25 2020, 23:03:10) [MSC v.1916 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\jokubask\\AppData\\Local\\Programs\\Python\\Python38\\Scripts\\mlagents-learn Assets\\Config\\AgentFootball.yml --run-id=football6",
+        "mlagents_version": "0.22.0",
+        "mlagents_envs_version": "0.22.0",
+        "communication_protocol_version": "1.2.0",
+        "pytorch_version": "1.7.0+cu110",
+        "numpy_version": "1.19.4",
+        "end_time_seconds": "1607212301"
+    },
+    "total": 61.569224999999996,
+    "count": 1,
+    "self": 0.17606349999999082,
+    "children": {
+        "run_training.setup": {
+            "total": 0.0815246999999999,
+            "count": 1,
+            "self": 0.0815246999999999
+        },
+        "TrainerController.start_learning": {
+            "total": 61.3116368,
+            "count": 1,
+            "self": 0.0002662000000057674,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 61.3106581,
+                    "count": 1,
+                    "self": 61.3106581
+                },
+                "TrainerController._save_models": {
+                    "total": 0.0007124999999987836,
+                    "count": 1,
+                    "self": 0.0007124999999987836
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "ShipAgentFootball": {
+        "checkpoints": [
+            {
+                "steps": 0,
+                "file_path": "results\\football3x3Rays\\ShipAgentFootball\\ShipAgentFootball-0.nn",
+                "reward": null,
+                "creation_time": 1607543614.2429504
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 0,
+            "file_path": "results\\football3x3Rays\\ShipAgentFootball.nn",
+            "reward": null,
+            "creation_time": 1607543614.2429504
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.1.0",
+        "mlagents_version": "0.20.0",
+        "tensorflow_version": "2.3.1"
+    }
+}
