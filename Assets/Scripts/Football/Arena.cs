@@ -36,10 +36,17 @@ public class Arena : MonoBehaviour
     {
         foreach (var playerState in PlayerStates)
         {
-            if(playerState.agentScript.team == scoredTeam)
+            if (playerState.agentScript.team == scoredTeam)
+            {
+                //Debug.Log(1 + playerState.agentScript.timePenalty);
                 playerState.agentScript.AddReward(1 + playerState.agentScript.timePenalty);
+            }
+
             else
+            {
                 playerState.agentScript.AddReward(-1);
+                //Debug.Log("-1");
+            }
             playerState.agentScript.EndEpisode();
         }
     }
@@ -58,7 +65,7 @@ public class Arena : MonoBehaviour
 
     public void ResetBall()
     {
-        ball.transform.localPosition = ballStartingPos;
+        ball.transform.localPosition = new Vector3(Random.Range(-35f,35f), Random.Range(-17f, 17f));//ballStartingPos;
         ballRb.velocity = Vector2.zero;
         ballRb.angularVelocity = 0;
     }
