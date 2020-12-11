@@ -558,7 +558,7 @@ PrefabInstance:
     - target: {fileID: 747856090111455591, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 98e51d0a7751a90409941ccf36a5b06b, type: 3}
     - target: {fileID: 747856090111455591, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
       propertyPath: m_BehaviorType
       value: 0
@@ -586,7 +586,7 @@ PrefabInstance:
     - target: {fileID: 1691469499564938378, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 98e51d0a7751a90409941ccf36a5b06b, type: 3}
     - target: {fileID: 1691469499564938378, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
       propertyPath: m_BehaviorType
       value: 0
@@ -606,7 +606,7 @@ PrefabInstance:
     - target: {fileID: 1948232255663662077, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 98e51d0a7751a90409941ccf36a5b06b, type: 3}
     - target: {fileID: 1948232255663662077, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
       propertyPath: m_BehaviorType
       value: 0
@@ -658,7 +658,7 @@ PrefabInstance:
     - target: {fileID: 5056568303994018669, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 98e51d0a7751a90409941ccf36a5b06b, type: 3}
     - target: {fileID: 5056568303994018669, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
       propertyPath: m_BehaviorType
       value: 0
@@ -734,7 +734,7 @@ PrefabInstance:
     - target: {fileID: 7604283798887142671, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 98e51d0a7751a90409941ccf36a5b06b, type: 3}
     - target: {fileID: 7604283798887142671, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
       propertyPath: m_BehaviorType
       value: 0
@@ -754,7 +754,7 @@ PrefabInstance:
     - target: {fileID: 8500233961957546467, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 98e51d0a7751a90409941ccf36a5b06b, type: 3}
     - target: {fileID: 8500233961957546467, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
       propertyPath: m_BehaviorType
       value: 0
@@ -788,6 +788,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 874357218, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298663707, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444088551, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059855287, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 250201301687251635, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
       propertyPath: DecisionPeriod
       value: 5
@@ -964,6 +980,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainingAreaObservational (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5056568304069616261, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6626272238203848026, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
       propertyPath: m_Layer
       value: 14
@@ -1022,6 +1042,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9072086617905707666, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
       propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072086618905624970, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1892,6 +1916,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 874357218, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298663707, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444088551, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059855287, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 250201301687251635, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
       propertyPath: DecisionPeriod
       value: 5
@@ -2068,6 +2108,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainingAreaObservational (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5056568304069616261, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6626272238203848026, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
       propertyPath: m_Layer
       value: 14
@@ -2126,6 +2170,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9072086617905707666, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
       propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072086618905624970, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2989,6 +3037,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 874357218, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298663707, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444088551, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059855287, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 250201301687251635, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
       propertyPath: DecisionPeriod
       value: 5
@@ -3165,6 +3229,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainingAreaObservational (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5056568304069616261, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6626272238203848026, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
       propertyPath: m_Layer
       value: 14
@@ -3223,6 +3291,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9072086617905707666, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
       propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072086618905624970, guid: d80f911832e3c50499651e3d7a637e3a, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
