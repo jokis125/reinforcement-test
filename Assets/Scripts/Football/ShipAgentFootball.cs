@@ -110,7 +110,7 @@ public class ShipAgentFootball : Agent
         if (c.gameObject.CompareTag("ball"))
         {
             //Debug.Log($"Added reward: {0.2f * _mBallTouch}");
-            AddReward(0.2f * _mBallTouch);
+            AddReward(0.1f);
             Vector2 trans2 = transform.localPosition;
             var dir = c.contacts[0].point - trans2;
             dir = dir.normalized;
