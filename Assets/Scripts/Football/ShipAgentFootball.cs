@@ -2,6 +2,7 @@
 using Unity.Mathematics;
 using UnityEngine;
 using Unity.MLAgents;
+using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Policies;
 using Unity.MLAgents.Sensors;
 using UnityEngine.UIElements;
@@ -46,13 +47,17 @@ public class ShipAgentFootball : Agent
     private List<Rigidbody2D> _opponentRbs = new List<Rigidbody2D>();
     private List<Rigidbody2D> _teamRbs = new List<Rigidbody2D>();
     private Rigidbody2D _ballRb;
+    
+    public float forwardSpeed = 2;
+    public float rotationVelocity = 250;
+
 
     //for normalization
-    private float _arenaXMax = 45f;
-    private float _arenaYMax = 19.5f;
+    private float _arenaXMax = 32.5f;
+    private float _arenaYMax = 13.1f;
     //Estimates
-    private float _maxXVelocity = 25f;
-    private float _maxYVelocity = 21f;
+    private float _maxXVelocity = 20f;
+    private float _maxYVelocity = 20f;
     private float _maxAngularVelocity = 250f;
     
 
@@ -60,7 +65,7 @@ public class ShipAgentFootball : Agent
     {
         rBody = GetComponent<Rigidbody2D>();
         _ballRb = Target.GetComponent<Rigidbody2D>();
-        //Time.timeScale = 2f;
+        Time.timeScale = 1f;
         
         
         m_Existential = 1f / MaxStep;
@@ -109,8 +114,8 @@ public class ShipAgentFootball : Agent
         var force = m_kickPower * kPower;
         if (c.gameObject.CompareTag("ball"))
         {
-            //Debug.Log($"Added reward: {0.2f * _mBallTouch}");
-            AddReward(0.1f);
+            //Debug.Log($"Added reward: {0.1f}");
+            AddReward(0.05f);
             Vector2 trans2 = transform.localPosition;
             var dir = c.contacts[0].point - trans2;
             dir = dir.normalized;
@@ -165,19 +170,14 @@ public class ShipAgentFootball : Agent
         }
     }
     
-    public float forceMultiplier = 10;
-    public float rotationVelocity = 100;
-    
-    public override void OnActionReceived(float[] vectorAction)
+
+    public override void OnActionReceived(ActionBuffers actionBuffers)
     {
         // Actions, size = 2
         var controlSignal = Vector3.zero;
 
         //Controls
-        controlSignal.x = -vectorAction[0];
-        rBody.angularVelocity = rotationVelocity * controlSignal.x;
-        controlSignal.y = vectorAction[1];
-        rBody.AddRelativeForce(new Vector2(0, controlSignal.y * forceMultiplier));
+        MoveAgent(actionBuffers.DiscreteActions);
         
         // Existential penalty
         if (position == Position.Goalie)
@@ -192,10 +192,67 @@ public class ShipAgentFootball : Agent
         
     }
     
-    public override void Heuristic(float[] actionsOut)
+    public override void Heuristic(in ActionBuffers actionsOut)
     {
-        actionsOut[0] = Input.GetAxis("Horizontal");
-        actionsOut[1] = Input.GetAxis("Vertical");
+        var discreteActionsOut = actionsOut.DiscreteActions;
+        discreteActionsOut.Clear();
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            discreteActionsOut[0] = 1;
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            discreteActionsOut[0] = 2;
+        }
+        
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            discreteActionsOut[1] = 1;
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            discreteActionsOut[1] = 2;
+        }
+    }
+
+    private void MoveAgent(ActionSegment<int> act)
+    {
+        var dirToGo = Vector2.zero;
+        var rotateDir = 0f;
+
+        var forwardAxis = act[0];
+        var rotateAxis = act[1];
+
+        switch (forwardAxis)
+        {
+            case 0:
+                dirToGo = Vector2.zero;
+                break;
+            case 1:
+                dirToGo = Vector2.up * forwardSpeed;
+                
+                break;
+            case 2:
+                dirToGo = Vector2.up * -forwardSpeed;
+                break;
+        }
+
+
+        switch (rotateAxis)
+        {
+            case 0:
+                rotateDir = 0;
+                break;
+            case 1:
+                rotateDir = rotationVelocity;
+                break;
+            case 2:
+                rotateDir = -rotationVelocity;
+                break;
+        }
+        rBody.angularVelocity = rotateDir;
+        rBody.AddRelativeForce(dirToGo);
+
     }
     
     //------------------------------------------normalization

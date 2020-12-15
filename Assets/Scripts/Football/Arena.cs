@@ -22,7 +22,7 @@ public class Arena : MonoBehaviour
     //public GameObject goalTextUI;
 
     private EnvironmentParameters m_ResetParams;
-    private float goalLine = 41; //-41 and 41
+    private float goalLine = 30; //-41 and 41
     
     void Awake()
     {
@@ -65,7 +65,8 @@ public class Arena : MonoBehaviour
 
     public void ResetBall()
     {
-        ball.transform.localPosition = new Vector3(Random.Range(-35f,35f), Random.Range(-17f, 17f));//ballStartingPos;
+        ball.transform.localPosition = new Vector3(Random.Range(-15f,15f), Random.Range(-10f, 10f));//ballStartingPos;
+        //ball.transform.localPosition = ballStartingPos;
         ballRb.velocity = Vector2.zero;
         ballRb.angularVelocity = 0;
     }
