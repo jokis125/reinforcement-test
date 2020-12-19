@@ -65,7 +65,6 @@ public class ShipAgentFootball : Agent
     {
         rBody = GetComponent<Rigidbody2D>();
         _ballRb = Target.GetComponent<Rigidbody2D>();
-        Time.timeScale = 1f;
         
         
         m_Existential = 1f / MaxStep;
@@ -99,7 +98,7 @@ public class ShipAgentFootball : Agent
         var playerState = new PlayerState
         {
             agentRb = rBody,
-            startingPos = transform.position,
+            startingPos = transform.localPosition,
             agentScript = this,
         };
         area.PlayerStates.Add(playerState);
@@ -115,11 +114,11 @@ public class ShipAgentFootball : Agent
         if (c.gameObject.CompareTag("ball"))
         {
             //Debug.Log($"Added reward: {0.1f}");
-            AddReward(0.05f);
-            Vector2 trans2 = transform.localPosition;
+            AddReward(0.1f);
+            /*Vector2 trans2 = transform.localPosition;
             var dir = c.contacts[0].point - trans2;
             dir = dir.normalized;
-            c.gameObject.GetComponent<Rigidbody2D>().AddForce(dir * force);
+            c.gameObject.GetComponent<Rigidbody2D>().AddForce(dir * force);*/
         }
     }
     
@@ -195,6 +194,7 @@ public class ShipAgentFootball : Agent
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         var discreteActionsOut = actionsOut.DiscreteActions;
+        //Debug.Log($"Target coords {NormalizePosition(Target.localPosition)}");
         discreteActionsOut.Clear();
         if (Input.GetKey(KeyCode.UpArrow))
         {
@@ -256,11 +256,11 @@ public class ShipAgentFootball : Agent
     }
     
     //------------------------------------------normalization
-    private Vector3 NormalizePosition(Vector3 pos)
+    private Vector2 NormalizePosition(Vector3 pos)
     {
         /*Debug.Log(new Vector3((pos.x - (-_arenaXMax))/(_arenaXMax - (-_arenaXMax)), 
             (pos.y - (-_arenaYMax))/(_arenaYMax - (-_arenaYMax))));*/
-        return new Vector3((pos.x - (-_arenaXMax))/(_arenaXMax - (-_arenaXMax)), 
+        return new Vector2((pos.x - (-_arenaXMax))/(_arenaXMax - (-_arenaXMax)), 
             (pos.y - (-_arenaYMax))/(_arenaYMax - (-_arenaYMax)));
     }
 

@@ -448,7 +448,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.1
-  m_LinearDrag: 0.1
+  m_LinearDrag: 0.2
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 6be394eae056d134eb06333a524202bf, type: 2}
@@ -522,8 +522,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5720486967106978966}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 10, y: 0, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.25, z: 1}
+  m_LocalPosition: {x: 10, y: -7.5, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 3022810784244699380}
   m_RootOrder: 5
@@ -592,7 +592,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.25
-  m_LinearDrag: 0.3
+  m_LinearDrag: 7
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -613,12 +613,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 42
+    VectorObservationSize: 25
     NumStackedVectorObservations: 1
-    VectorActionSize: 02000000
+    VectorActionSize: 0300000003000000
     VectorActionDescriptions: []
-    VectorActionSpaceType: 1
-  m_Model: {fileID: 5022602860645237092, guid: 5daf6e0ffb63e994fbff21740655f9d8, type: 3}
+    VectorActionSpaceType: 0
+  m_Model: {fileID: 0}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: ShipAgentFootball
@@ -683,16 +683,14 @@ MonoBehaviour:
   opponents:
   - {fileID: 3022810784186083621}
   - {fileID: 7329045254584771361}
-  - {fileID: 0}
   teammates:
   - {fileID: 7781613434372144160}
-  - {fileID: 0}
   area: {fileID: 4309170982020817010}
   position: 1
   timePenalty: 0
-  Target: {fileID: 1313119004036532452}
-  forceMultiplier: 2
+  forwardSpeed: 20
   rotationVelocity: 250
+  Target: {fileID: 1313119004036532452}
 --- !u!114 &7550939900251661228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -738,8 +736,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7329045254584771361}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -10, y: 0, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.25, z: 1}
+  m_LocalPosition: {x: -10, y: -7.5, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 3022810784244699380}
   m_RootOrder: 1
@@ -808,7 +806,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.25
-  m_LinearDrag: 0.3
+  m_LinearDrag: 7
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -829,12 +827,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 42
+    VectorObservationSize: 25
     NumStackedVectorObservations: 1
-    VectorActionSize: 02000000
+    VectorActionSize: 0300000003000000
     VectorActionDescriptions: []
-    VectorActionSpaceType: 1
-  m_Model: {fileID: 5022602860645237092, guid: 5daf6e0ffb63e994fbff21740655f9d8, type: 3}
+    VectorActionSpaceType: 0
+  m_Model: {fileID: 0}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: ShipAgentFootball
@@ -899,16 +897,14 @@ MonoBehaviour:
   opponents:
   - {fileID: 7781613434372144160}
   - {fileID: 5720486967106978966}
-  - {fileID: 0}
   teammates:
   - {fileID: 3022810784186083621}
-  - {fileID: 0}
   area: {fileID: 4309170982020817010}
   position: 1
   timePenalty: 0
-  Target: {fileID: 1313119004036532452}
-  forceMultiplier: 2
+  forwardSpeed: 20
   rotationVelocity: 250
+  Target: {fileID: 1313119004036532452}
 --- !u!114 &7829297612566626501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -969,8 +965,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7781613434372144160}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 10, y: 10, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.25, z: 1}
+  m_LocalPosition: {x: 10, y: 7.5, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 3022810784244699380}
   m_RootOrder: 4
@@ -1039,7 +1035,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.25
-  m_LinearDrag: 0.3
+  m_LinearDrag: 7
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -1060,12 +1056,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 42
+    VectorObservationSize: 25
     NumStackedVectorObservations: 1
-    VectorActionSize: 02000000
+    VectorActionSize: 0300000003000000
     VectorActionDescriptions: []
-    VectorActionSpaceType: 1
-  m_Model: {fileID: 5022602860645237092, guid: 5daf6e0ffb63e994fbff21740655f9d8, type: 3}
+    VectorActionSpaceType: 0
+  m_Model: {fileID: 0}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: ShipAgentFootball
@@ -1130,16 +1126,14 @@ MonoBehaviour:
   opponents:
   - {fileID: 3022810784186083621}
   - {fileID: 7329045254584771361}
-  - {fileID: 0}
   teammates:
   - {fileID: 5720486967106978966}
-  - {fileID: 0}
   area: {fileID: 4309170982020817010}
   position: 1
   timePenalty: 0
-  Target: {fileID: 1313119004036532452}
-  forceMultiplier: 2
+  forwardSpeed: 20
   rotationVelocity: 250
+  Target: {fileID: 1313119004036532452}
 --- !u!114 &6637876035601919877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2364,6 +2358,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1313119004036532452}
     - target: {fileID: 5989720587936629813, guid: 34e5da9e5f82a5546b0dba8d799bebb8, type: 3}
+      propertyPath: forwardSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989720587936629813, guid: 34e5da9e5f82a5546b0dba8d799bebb8, type: 3}
+      propertyPath: opponents.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989720587936629813, guid: 34e5da9e5f82a5546b0dba8d799bebb8, type: 3}
+      propertyPath: teammates.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989720587936629813, guid: 34e5da9e5f82a5546b0dba8d799bebb8, type: 3}
       propertyPath: opponents.Array.data[0]
       value: 
       objectReference: {fileID: 7781613434372144160}
@@ -2375,9 +2381,45 @@ PrefabInstance:
       propertyPath: teammates.Array.data[0]
       value: 
       objectReference: {fileID: 7329045254584771361}
+    - target: {fileID: 8055378271301810188, guid: 34e5da9e5f82a5546b0dba8d799bebb8, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8055378271301810188, guid: 34e5da9e5f82a5546b0dba8d799bebb8, type: 3}
+      propertyPath: m_BrainParameters.VectorActionSpaceType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8055378271301810188, guid: 34e5da9e5f82a5546b0dba8d799bebb8, type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8055378271301810188, guid: 34e5da9e5f82a5546b0dba8d799bebb8, type: 3}
+      propertyPath: m_BrainParameters.VectorActionSize.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8055378271301810188, guid: 34e5da9e5f82a5546b0dba8d799bebb8, type: 3}
+      propertyPath: m_BrainParameters.VectorActionSize.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8055378271301810188, guid: 34e5da9e5f82a5546b0dba8d799bebb8, type: 3}
+      propertyPath: m_BrainParameters.VectorActionSize.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8055378271301810224, guid: 34e5da9e5f82a5546b0dba8d799bebb8, type: 3}
+      propertyPath: m_LinearDrag
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8055378271301810225, guid: 34e5da9e5f82a5546b0dba8d799bebb8, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8055378271301810225, guid: 34e5da9e5f82a5546b0dba8d799bebb8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8055378271301810225, guid: 34e5da9e5f82a5546b0dba8d799bebb8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8055378271301810225, guid: 34e5da9e5f82a5546b0dba8d799bebb8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2385,7 +2427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8055378271301810225, guid: 34e5da9e5f82a5546b0dba8d799bebb8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.08
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 8055378271301810225, guid: 34e5da9e5f82a5546b0dba8d799bebb8, type: 3}
       propertyPath: m_LocalPosition.z
