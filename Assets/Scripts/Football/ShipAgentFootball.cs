@@ -51,6 +51,8 @@ public class ShipAgentFootball : Agent
     public float forwardSpeed = 2;
     public float rotationVelocity = 250;
 
+    public GameObject leftGoal;
+    public GameObject rightGoal;
 
     //for normalization
     private float _arenaXMax = 32.5f;
@@ -114,7 +116,18 @@ public class ShipAgentFootball : Agent
         if (c.gameObject.CompareTag("ball"))
         {
             //Debug.Log($"Added reward: {0.1f}");
-            AddReward(0.05f);
+            float addedReward = 0;
+            switch (team)
+            {
+                case Team.Left:
+                    addedReward = 1 / Vector3.Distance(Target.transform.localPosition, rightGoal.transform.localPosition);
+                    break;
+                case Team.Right:
+                    addedReward = 1 / Vector3.Distance(Target.transform.localPosition, leftGoal.transform.localPosition);
+                    break;
+            }
+            
+            AddReward(addedReward*1.5f);
             /*Vector2 trans2 = transform.localPosition;
             var dir = c.contacts[0].point - trans2;
             dir = dir.normalized;
@@ -194,7 +207,6 @@ public class ShipAgentFootball : Agent
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         var discreteActionsOut = actionsOut.DiscreteActions;
-        //Debug.Log($"Target coords {NormalizePosition(Target.localPosition)}");
         discreteActionsOut.Clear();
         if (Input.GetKey(KeyCode.UpArrow))
         {

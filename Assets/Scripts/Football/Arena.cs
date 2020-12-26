@@ -39,7 +39,8 @@ public class Arena : MonoBehaviour
             if (playerState.agentScript.team == scoredTeam)
             {
                 //Debug.Log(1 + playerState.agentScript.timePenalty);
-                playerState.agentScript.AddReward(1 + playerState.agentScript.timePenalty);
+                //playerState.agentScript.AddReward(1 + playerState.agentScript.timePenalty);
+                playerState.agentScript.AddReward(1);
             }
 
             else
