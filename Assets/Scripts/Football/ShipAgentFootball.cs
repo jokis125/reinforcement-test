@@ -127,7 +127,7 @@ public class ShipAgentFootball : Agent
                     break;
             }
             
-            AddReward(addedReward*1.5f);
+            AddReward(addedReward*2);
             /*Vector2 trans2 = transform.localPosition;
             var dir = c.contacts[0].point - trans2;
             dir = dir.normalized;
