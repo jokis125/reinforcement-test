@@ -67,6 +67,7 @@ public class ShipAgentFootball : Agent
     {
         rBody = GetComponent<Rigidbody2D>();
         _ballRb = Target.GetComponent<Rigidbody2D>();
+        Time.timeScale = 2f;
         
         
         m_Existential = 1f / MaxStep;
@@ -115,19 +116,10 @@ public class ShipAgentFootball : Agent
         var force = m_kickPower * kPower;
         if (c.gameObject.CompareTag("ball"))
         {
+            // PADARYT CONTINUOUS REWARD UZ ATSTUMA TARP VARTU IR AGENTO
+            // REWARD UZ KAMUOLIO TOUCH
             //Debug.Log($"Added reward: {0.1f}");
-            float addedReward = 0;
-            switch (team)
-            {
-                case Team.Left:
-                    addedReward = 1 / Vector3.Distance(Target.transform.localPosition, rightGoal.transform.localPosition);
-                    break;
-                case Team.Right:
-                    addedReward = 1 / Vector3.Distance(Target.transform.localPosition, leftGoal.transform.localPosition);
-                    break;
-            }
             
-            AddReward(addedReward*2);
             /*Vector2 trans2 = transform.localPosition;
             var dir = c.contacts[0].point - trans2;
             dir = dir.normalized;
@@ -185,9 +177,6 @@ public class ShipAgentFootball : Agent
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
     {
-        // Actions, size = 2
-        var controlSignal = Vector3.zero;
-
         //Controls
         MoveAgent(actionBuffers.DiscreteActions);
         
@@ -201,6 +190,7 @@ public class ShipAgentFootball : Agent
             timePenalty -= m_Existential;
         }
         area.CheckForGoal();
+        AddRewardForBallClosenessToGoal();
         
     }
     
@@ -295,5 +285,21 @@ public class ShipAgentFootball : Agent
     {
         //Debug.Log((no - (-_maxAngularVelocity)) / (_maxAngularVelocity - (-_maxAngularVelocity)));
         return (no - (-_maxAngularVelocity)) / (_maxAngularVelocity - (-_maxAngularVelocity));
+    }
+
+    private void AddRewardForBallClosenessToGoal()
+    {
+        float addedReward = 0;
+        switch (team)
+        {
+            case Team.Left:
+                addedReward = 1 / Vector3.Distance(Target.transform.localPosition, rightGoal.transform.localPosition);
+                break;
+            case Team.Right:
+                addedReward = 1 / Vector3.Distance(Target.transform.localPosition, leftGoal.transform.localPosition);
+                break;
+        }
+            
+        AddReward(addedReward*0.5f);
     }
 }
