@@ -67,7 +67,6 @@ public class ShipAgentFootball : Agent
     {
         rBody = GetComponent<Rigidbody2D>();
         _ballRb = Target.GetComponent<Rigidbody2D>();
-        Time.timeScale = 2f;
         
         
         m_Existential = 1f / MaxStep;
@@ -118,8 +117,8 @@ public class ShipAgentFootball : Agent
         {
             // PADARYT CONTINUOUS REWARD UZ ATSTUMA TARP VARTU IR AGENTO
             // REWARD UZ KAMUOLIO TOUCH
-            //Debug.Log($"Added reward: {0.1f}");
-            
+            AddReward(0.0015f);
+
             /*Vector2 trans2 = transform.localPosition;
             var dir = c.contacts[0].point - trans2;
             dir = dir.normalized;
@@ -300,6 +299,22 @@ public class ShipAgentFootball : Agent
                 break;
         }
             
-        AddReward(addedReward*0.5f);
+        AddReward(addedReward*0.01f);
+    }
+
+    private void AddRewardForAgentClosenessToGoal()
+    {
+        float addedReward = 0;
+        switch (team)
+        {
+            case Team.Left:
+                addedReward = 1 / Vector3.Distance(transform.localPosition, rightGoal.transform.localPosition);
+                break;
+            case Team.Right:
+                addedReward = 1 / Vector3.Distance(transform.localPosition, leftGoal.transform.localPosition);
+                break;
+        }
+
+        AddReward(addedReward * 0.02f);
     }
 }

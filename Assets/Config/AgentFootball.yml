@@ -6,7 +6,7 @@ behaviors:
     trainer_type: ppo
     hyperparameters:
       batch_size: 256
-      buffer_size: 4096
+      buffer_size: 8192
       learning_rate: 3.0e-3
       beta: 5.0e-3
       epsilon: 0.2
@@ -20,7 +20,7 @@ behaviors:
       vis_encode_type: simple
     reward_signals:
       extrinsic:
-        gamma: 0.99
+        gamma: 0.97
         strength: 1.0
     max_steps: 50000000
     time_horizon: 1000
@@ -28,8 +28,8 @@ behaviors:
     threaded: true
     self_play:
       save_steps: 50000
-      team_change: 200000
-      swap_steps: 2000
+      team_change: 250000
+      swap_steps: 10000
       window: 10
       play_against_latest_model_ratio: 0.5
       initial_elo: 1200.0
