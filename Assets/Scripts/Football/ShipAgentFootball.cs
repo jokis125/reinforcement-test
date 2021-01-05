@@ -65,6 +65,8 @@ public class ShipAgentFootball : Agent
 
     public override void Initialize()
     {
+        //Time.timeScale = 1f;
+        
         rBody = GetComponent<Rigidbody2D>();
         _ballRb = Target.GetComponent<Rigidbody2D>();
         
@@ -115,9 +117,14 @@ public class ShipAgentFootball : Agent
         var force = m_kickPower * kPower;
         if (c.gameObject.CompareTag("ball"))
         {
-            // PADARYT CONTINUOUS REWARD UZ ATSTUMA TARP VARTU IR AGENTO
+            // PADARYT CONTINUOUS REWARD UZ ATSTUMA TARP VARTU IR KAMUOLIO
             // REWARD UZ KAMUOLIO TOUCH
-            AddReward(0.0015f);
+            // 
+            if (Mathf.Abs(Target.localPosition.y) <= 10f)
+            {
+                AddReward(0.15f);
+            }
+                
 
             /*Vector2 trans2 = transform.localPosition;
             var dir = c.contacts[0].point - trans2;
@@ -179,7 +186,7 @@ public class ShipAgentFootball : Agent
         //Controls
         MoveAgent(actionBuffers.DiscreteActions);
         
-        // Existential penalty
+        // Existential penalty UNUSED
         if (position == Position.Goalie)
             AddReward(m_Existential);
         else if(position == Position.Striker)
@@ -289,17 +296,25 @@ public class ShipAgentFootball : Agent
     private void AddRewardForBallClosenessToGoal()
     {
         float addedReward = 0;
+        var ballLocalPos = Target.transform.localPosition;
         switch (team)
         {
+            // if ball on the wrong side of the pitch add penalty
+            case Team.Left when ballLocalPos.x >= 0:
+                addedReward = 1 / Vector3.Distance(ballLocalPos, rightGoal.transform.localPosition);
+                break;
             case Team.Left:
-                addedReward = 1 / Vector3.Distance(Target.transform.localPosition, rightGoal.transform.localPosition);
+                addedReward = -(1 / Vector3.Distance(ballLocalPos, leftGoal.transform.localPosition));
+                break;
+            case Team.Right when ballLocalPos.x <= 0:
+                addedReward = 1 / Vector3.Distance(ballLocalPos, leftGoal.transform.localPosition);
                 break;
             case Team.Right:
-                addedReward = 1 / Vector3.Distance(Target.transform.localPosition, leftGoal.transform.localPosition);
+                addedReward = -(1 / Vector3.Distance(ballLocalPos, rightGoal.transform.localPosition));
                 break;
         }
-            
-        AddReward(addedReward*0.01f);
+        AddReward(addedReward*0.005f);
+        //Debug.Log(addedReward*0.005f);
     }
 
     private void AddRewardForAgentClosenessToGoal()
@@ -315,6 +330,6 @@ public class ShipAgentFootball : Agent
                 break;
         }
 
-        AddReward(addedReward * 0.02f);
+        AddReward(addedReward * 0.002f);
     }
 }

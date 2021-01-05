@@ -346,6 +346,7 @@ MonoBehaviour:
   m_OptimizeGeometry: 1
   m_EnableTangents: 0
   m_GeometryCached: 0
+  m_UTess2D: 0
 --- !u!68 &1313119002901378042
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -1357,6 +1358,7 @@ MonoBehaviour:
   m_OptimizeGeometry: 1
   m_EnableTangents: 0
   m_GeometryCached: 0
+  m_UTess2D: 0
 --- !u!68 &8061342659403798467
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -1558,6 +1560,7 @@ MonoBehaviour:
   m_OptimizeGeometry: 1
   m_EnableTangents: 0
   m_GeometryCached: 0
+  m_UTess2D: 0
 --- !u!68 &8061342659729013615
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -1597,7 +1600,7 @@ GameObject:
   - component: {fileID: 8061342659806480207}
   m_Layer: 10
   m_Name: GoalPostUp
-  m_TagString: wall
+  m_TagString: goalPosts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1824,6 +1827,7 @@ MonoBehaviour:
   m_OptimizeGeometry: 1
   m_EnableTangents: 0
   m_GeometryCached: 0
+  m_UTess2D: 0
 --- !u!68 &8061342659876403347
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -1863,7 +1867,7 @@ GameObject:
   - component: {fileID: 8061342659935216938}
   m_Layer: 10
   m_Name: GoalPostDown
-  m_TagString: wall
+  m_TagString: goalPosts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1962,7 +1966,7 @@ GameObject:
   - component: {fileID: 8061342660097626568}
   m_Layer: 10
   m_Name: GoalPostDown
-  m_TagString: wall
+  m_TagString: goalPosts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2189,6 +2193,7 @@ MonoBehaviour:
   m_OptimizeGeometry: 1
   m_EnableTangents: 0
   m_GeometryCached: 0
+  m_UTess2D: 0
 --- !u!68 &8061342660380332950
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -2290,7 +2295,7 @@ GameObject:
   - component: {fileID: 8061342661012761092}
   m_Layer: 10
   m_Name: GoalPosts
-  m_TagString: wall
+  m_TagString: goalPosts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2324,7 +2329,7 @@ GameObject:
   - component: {fileID: 8061342661098429086}
   m_Layer: 10
   m_Name: GoalPostUp
-  m_TagString: wall
+  m_TagString: goalPosts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2540,6 +2545,10 @@ PrefabInstance:
     - target: {fileID: 8055378271301810226, guid: 34e5da9e5f82a5546b0dba8d799bebb8, type: 3}
       propertyPath: m_Name
       value: LeftAgent0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8055378271301810226, guid: 34e5da9e5f82a5546b0dba8d799bebb8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34e5da9e5f82a5546b0dba8d799bebb8, type: 3}
