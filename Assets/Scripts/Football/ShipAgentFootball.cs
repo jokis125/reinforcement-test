@@ -43,6 +43,7 @@ public class ShipAgentFootball : Agent
     private EnvironmentParameters m_ResetParams;
 
     private float m_Existential;
+    private float _timePenaltyMultiplier;
 
     private List<Rigidbody2D> _opponentRbs = new List<Rigidbody2D>();
     private List<Rigidbody2D> _teamRbs = new List<Rigidbody2D>();
@@ -65,7 +66,7 @@ public class ShipAgentFootball : Agent
 
     public override void Initialize()
     {
-        //Time.timeScale = 1f;
+        Time.timeScale = 3f;
         
         rBody = GetComponent<Rigidbody2D>();
         _ballRb = Target.GetComponent<Rigidbody2D>();
@@ -120,9 +121,9 @@ public class ShipAgentFootball : Agent
             // PADARYT CONTINUOUS REWARD UZ ATSTUMA TARP VARTU IR KAMUOLIO
             // REWARD UZ KAMUOLIO TOUCH
             // 
-            if (Mathf.Abs(Target.localPosition.y) <= 10f)
+            if (Mathf.Abs(Target.localPosition.y) <= 6.5f)
             {
-                AddReward(0.15f);
+                AddReward(0.15f * _timePenaltyMultiplier);
             }
                 
 
@@ -140,6 +141,7 @@ public class ShipAgentFootball : Agent
     public override void OnEpisodeBegin()
     {
         timePenalty = 0;
+        _timePenaltyMultiplier = 1;
         _mBallTouch = m_ResetParams.GetWithDefault("ball_touch", _mBallTouch);
         transform.localRotation = Quaternion.Euler(0,0, m_Rotation);
         transform.localPosition = m_Transform;
@@ -183,6 +185,8 @@ public class ShipAgentFootball : Agent
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
     {
+        
+        
         //Controls
         MoveAgent(actionBuffers.DiscreteActions);
         
@@ -193,8 +197,10 @@ public class ShipAgentFootball : Agent
             AddReward(-m_Existential);
         else
         {
-            timePenalty -= m_Existential;
+            timePenalty += m_Existential;
         }
+
+        _timePenaltyMultiplier = 1-timePenalty;
         area.CheckForGoal();
         AddRewardForBallClosenessToGoal();
         
@@ -301,19 +307,19 @@ public class ShipAgentFootball : Agent
         {
             // if ball on the wrong side of the pitch add penalty
             case Team.Left when ballLocalPos.x >= 0:
-                addedReward = 1 / Vector3.Distance(ballLocalPos, rightGoal.transform.localPosition);
+                addedReward = 3 / Vector3.Distance(ballLocalPos, rightGoal.transform.localPosition);
                 break;
             case Team.Left:
                 addedReward = -(1 / Vector3.Distance(ballLocalPos, leftGoal.transform.localPosition));
                 break;
             case Team.Right when ballLocalPos.x <= 0:
-                addedReward = 1 / Vector3.Distance(ballLocalPos, leftGoal.transform.localPosition);
+                addedReward = 3 / Vector3.Distance(ballLocalPos, leftGoal.transform.localPosition);
                 break;
             case Team.Right:
                 addedReward = -(1 / Vector3.Distance(ballLocalPos, rightGoal.transform.localPosition));
                 break;
         }
-        AddReward(addedReward*0.005f);
+        AddReward(addedReward*0.0025f);
         //Debug.Log(addedReward*0.005f);
     }
 
