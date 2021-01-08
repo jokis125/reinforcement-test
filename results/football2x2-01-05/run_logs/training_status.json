@@ -2,18 +2,6 @@
     "ShipAgentFootball": {
         "checkpoints": [
             {
-                "steps": 48499528,
-                "file_path": "results\\football2x2-01-05\\ShipAgentFootball\\ShipAgentFootball-48499528.onnx",
-                "reward": 1.8606948107481003,
-                "creation_time": 1610089176.7678776
-            },
-            {
-                "steps": 48999606,
-                "file_path": "results\\football2x2-01-05\\ShipAgentFootball\\ShipAgentFootball-48999606.onnx",
-                "reward": 2.4184835188918643,
-                "creation_time": 1610091500.6575894
-            },
-            {
                 "steps": 49499468,
                 "file_path": "results\\football2x2-01-05\\ShipAgentFootball\\ShipAgentFootball-49499468.onnx",
                 "reward": 0.40389332988045434,
@@ -30,13 +18,25 @@
                 "file_path": "results\\football2x2-01-05\\ShipAgentFootball\\ShipAgentFootball-50000230.onnx",
                 "reward": 0.16147398948669434,
                 "creation_time": 1610096163.054623
+            },
+            {
+                "steps": 50499992,
+                "file_path": "results\\football2x2-01-05\\ShipAgentFootball\\ShipAgentFootball-50499992.onnx",
+                "reward": 1.3500644239512356,
+                "creation_time": 1610120096.9207425
+            },
+            {
+                "steps": 50816410,
+                "file_path": "results\\football2x2-01-05\\ShipAgentFootball\\ShipAgentFootball-50816410.onnx",
+                "reward": 0.4198633134365082,
+                "creation_time": 1610121517.0538495
             }
         ],
         "final_checkpoint": {
-            "steps": 50000230,
+            "steps": 50816410,
             "file_path": "results\\football2x2-01-05\\ShipAgentFootball.onnx",
-            "reward": 0.16147398948669434,
-            "creation_time": 1610096163.054623
+            "reward": 0.4198633134365082,
+            "creation_time": 1610121517.0538495
         }
     },
     "metadata": {
