@@ -1,5 +1,5 @@
 engine_settings:
-  time_scale: 20
+  time_scale: 10
 
 behaviors:
   ShipAgentFootball:

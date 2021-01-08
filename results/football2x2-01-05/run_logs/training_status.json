@@ -1,0 +1,48 @@
+{
+    "ShipAgentFootball": {
+        "checkpoints": [
+            {
+                "steps": 48499528,
+                "file_path": "results\\football2x2-01-05\\ShipAgentFootball\\ShipAgentFootball-48499528.onnx",
+                "reward": 1.8606948107481003,
+                "creation_time": 1610089176.7678776
+            },
+            {
+                "steps": 48999606,
+                "file_path": "results\\football2x2-01-05\\ShipAgentFootball\\ShipAgentFootball-48999606.onnx",
+                "reward": 2.4184835188918643,
+                "creation_time": 1610091500.6575894
+            },
+            {
+                "steps": 49499468,
+                "file_path": "results\\football2x2-01-05\\ShipAgentFootball\\ShipAgentFootball-49499468.onnx",
+                "reward": 0.40389332988045434,
+                "creation_time": 1610093840.2802396
+            },
+            {
+                "steps": 49999700,
+                "file_path": "results\\football2x2-01-05\\ShipAgentFootball\\ShipAgentFootball-49999700.onnx",
+                "reward": -0.298808495203654,
+                "creation_time": 1610096162.949902
+            },
+            {
+                "steps": 50000230,
+                "file_path": "results\\football2x2-01-05\\ShipAgentFootball\\ShipAgentFootball-50000230.onnx",
+                "reward": 0.16147398948669434,
+                "creation_time": 1610096163.054623
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 50000230,
+            "file_path": "results\\football2x2-01-05\\ShipAgentFootball.onnx",
+            "reward": 0.16147398948669434,
+            "creation_time": 1610096163.054623
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.2.0",
+        "mlagents_version": "0.22.0",
+        "torch_version": "1.7.0+cu110",
+        "tensorflow_version": "2.3.1"
+    }
+}
